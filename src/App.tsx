@@ -1,34 +1,47 @@
-import { useState } from 'react';
+import { useMsal } from '@azure/msal-react';
+import { SecondaryBtn } from 'src/components/Button';
+
+import CatImage from 'src/components/CatImage';
 import './App.css';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import { loginRequest } from './auth/auth.config';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const { instance } = useMsal();
+  const activeAccount = instance.getActiveAccount();
+
+  function handleLoginRedirect() {
+    instance
+      .loginRedirect({
+        ...loginRequest,
+        prompt: 'create',
+      })
+      .catch((error) => console.log(error));
+  }
+
+  function handleLogoutRedirect() {
+    instance.logoutRedirect({
+      postLogoutRedirectUri: '/',
+    });
+    window.location.reload();
+  }
 
   return (
     <>
-      <div>
-        <h1 className="text-3xl font-bold underline">Azure Auth Integration</h1>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+      <h1 className="text-5xl font-bold mb-10">Azure AD Auth Integration</h1>
+      <div className="flex flex-col justify-center items-center gap-3">
+        <CatImage isAuth={activeAccount === null ? false : true} />
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+          {activeAccount
+            ? 'Welcome back! 🎉 You’re all set and authenticated. Let’s get started!'
+            : 'Hey there! 🌟 Please log in first :('}
         </p>
+
+        {activeAccount ? (
+          <SecondaryBtn onClick={handleLogoutRedirect}>Logout</SecondaryBtn>
+        ) : (
+          <SecondaryBtn onClick={handleLoginRedirect}>Login</SecondaryBtn>
+        )}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   );
 }
