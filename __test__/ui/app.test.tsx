@@ -51,8 +51,6 @@ describe('App component testing suite', () => {
       expect(imgActual).toBeInTheDocument();
       expect(imgActual).toHaveAttribute('alt', 'sad_cat');
 
-      console.log(mockInstance.getActiveAccount);
-
       expect(mockInstance.getActiveAccount()).toEqual(null);
     });
 
@@ -122,8 +120,6 @@ describe('App component testing suite', () => {
         expect(textActual).toBeInTheDocument();
         expect(imgActual).toBeInTheDocument();
         expect(imgActual).toHaveAttribute('alt', 'happy_cat');
-
-        console.log(mockInstance.getActiveAccount());
 
         expect(mockInstance.getActiveAccount()).toEqual(authUser);
       });

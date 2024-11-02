@@ -36,8 +36,3 @@ jobs:
       # Step 5: Run tests
       - name: Run tests
         run: npm test
-
-      # Step 6: Run Vite preview (optional for deploying build preview)
-      # This is useful if you want to preview the build output.
-      - name: Preview build
-        run: npm run preview
