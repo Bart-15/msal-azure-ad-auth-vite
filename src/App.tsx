@@ -1,7 +1,7 @@
+import { SecondaryBtn } from '@/components/Button';
+import CatImage from '@/components/CatImage';
 import { useMsal } from '@azure/msal-react';
-import { SecondaryBtn } from 'src/components/Button';
 
-import CatImage from 'src/components/CatImage';
 import './App.css';
 import { loginRequest } from './auth/auth.config';
 

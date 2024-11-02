@@ -1,5 +1,5 @@
-import happy_cat from 'src/assets/img/happy_cat.gif';
-import sad_cat from 'src/assets/img/sad_cat.gif';
+import happy_cat from '@/assets/img/happy_cat.gif';
+import sad_cat from '@/assets/img/sad_cat.gif';
 
 type CatImageProps = {
   isAuth: boolean;
