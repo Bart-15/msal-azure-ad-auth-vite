@@ -1,3 +1,4 @@
+import { config } from '@/config/config';
 import { LogLevel } from '@azure/msal-browser';
 
 /**
@@ -7,8 +8,8 @@ import { LogLevel } from '@azure/msal-browser';
  */
 export const msalConfig = {
   auth: {
-    clientId: import.meta.env.VITE_AZURE_CLIENT_ID,
-    authority: import.meta.env.VITE_AZURE_AUTHORITY,
+    clientId: config.AZURE_CLIENT_ID,
+    authority: config.AZURE_AUTHORITY,
     redirectUri: '/',
     postLogoutRedirectUri: '/',
     clientCapabilities: ['CP1'],
