@@ -10,12 +10,10 @@ function App() {
   const activeAccount = instance.getActiveAccount();
 
   function handleLoginRedirect() {
-    instance
-      .loginRedirect({
-        ...loginRequest,
-        prompt: 'create',
-      })
-      .catch((error) => console.log(error));
+    instance.loginRedirect({
+      ...loginRequest,
+      prompt: 'create',
+    });
   }
 
   function handleLogoutRedirect() {
