@@ -7,8 +7,8 @@ import { LogLevel } from '@azure/msal-browser';
  */
 export const msalConfig = {
   auth: {
-    clientId: 'your-client-id',
-    authority: '',
+    clientId: import.meta.env.VITE_AZURE_CLIENT_ID,
+    authority: import.meta.env.VITE_AZURE_AUTHORITY,
     redirectUri: '/',
     postLogoutRedirectUri: '/',
     clientCapabilities: ['CP1'],
